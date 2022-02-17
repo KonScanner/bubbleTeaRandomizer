@@ -15,11 +15,14 @@
     <!-- <div class="h-25 center-h">
 
     </div> -->
-    <div class="h-50 center-v center-h">
-        <select id="dropDownTea"></select>
+    <div id="divDropDownTea" class="h-50 center-v center-h" hidden="false">
+        <select id="dropDownTea">
+            <option value="">Select Tea</option>
+        </select>
         <input type="text" id="HiddenTea" hidden="True" value="Milk Tea" />
-        <h2 id="randomTea"></h2>
+
         <div>
+            <h2 id="randomTea"></h2>
             <form action="https://konscanner.github.io/bubbleTeaRandomizer/">
                 <button class="button-8" id="tryAgain" hidden="true">Try Again</button>
             </form>

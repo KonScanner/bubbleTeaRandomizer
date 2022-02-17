@@ -47,6 +47,19 @@ function display_tea_options_html(json) {
     mydiv.appendChild(newElement);
 }
 
+function what_tea(tea) {
+    if (tea === "Milk Tea") {
+        return get_milk_tea(json);
+    }
+    if (tea === "Fruit Tea") {
+        return get_fruit_tea(json);
+    }
+    if (tea === "Ice Tea") {
+        return get_ice_tea(json);
+    }
+
+}
+
 function get_tea(event) {
     // Gets symbol and time and places them into a hidden input field
     if (event.target.id !== 'dropDownTea') {
@@ -56,10 +69,12 @@ function get_tea(event) {
         document.getElementById("dropDownTea").value = event.target.value;
     }
     if (document.getElementById("dropDownTea").value !== "") {
-        let tea = document.getElementById("dropDownTea").value;
+        let tea_ = document.getElementById("dropDownTea").value;
+        let tea = what_tea(tea_);
         let topping1 = get_topping(json);
         let topping2 = get_topping(json);
         document.getElementById("randomTea").innerHTML = `${tea}, with ${topping1} and ${topping2}`;
+        document.getElementById("divDropDownTea").hidden = true;
         document.getElementById("dropDownTea").hidden = true;
         document.getElementById("tryAgain").hidden = false;
     }
