@@ -8,7 +8,7 @@ if __name__ == "__main__":
     for i in range(1, 6):
         exec(f"menu{i} = textract.process(f'{path}/menu{i}.jpg')")
         if i != 3:
-            exec(f'menu{i}_str = str(menu1).replace("\\x0c","")')
+            exec(f'menu{i}_str = str(menu{i}).replace("\\x0c","")')
         else:
             menu3_str = menu3.decode("utf-8")
     # Preprocessing steps, specific to this stores menu format
