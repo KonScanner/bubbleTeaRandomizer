@@ -70,7 +70,7 @@ function get_tea(event) {
     }
     if (document.getElementById("dropDownTea").value !== "") {
         let tea_ = document.getElementById("dropDownTea").value;
-        let tea = what_tea(tea_);
+        var tea = what_tea(tea_);
         let topping1 = get_topping(json);
         let topping2 = get_topping(json);
         document.getElementById("randomTea").innerHTML = `${tea}, with ${topping1} and ${topping2}`;

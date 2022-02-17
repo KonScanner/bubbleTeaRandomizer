@@ -16,7 +16,7 @@ if __name__ == "__main__":
     fruit_teas = [
         i.strip("b'").strip(".").capitalize() + " Tea"
         for i in menu2_str.split("\\n")
-        if len(i) > 1
+        if len(i) > 5
     ]
     ice_teas = [
         i.strip("b'").strip(".").capitalize().strip()
