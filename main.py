@@ -12,16 +12,20 @@ if __name__ == "__main__":
         else:
             menu3_str = menu3.decode("utf-8")
     # Preprocessing steps, specific to this stores menu format
-    milk_teas = [i.strip("b'") for i in menu1_str.split("\\n") if len(i) > 1]
+    milk_teas = [
+        i.strip("b'")
+        for i in menu1_str.split("\\n")
+        if len(i) > 3 and not i.startswith("\\x")
+    ]
     fruit_teas = [
         i.strip("b'").strip(".").capitalize() + " Tea"
         for i in menu2_str.split("\\n")
-        if len(i) > 5
+        if len(i) > 3 and not i.startswith("\\x")
     ]
     ice_teas = [
         i.strip("b'").strip(".").capitalize().strip()
         for i in menu3_str.replace("\\n", " ").split("Mix")
-        if len(i) > 1
+        if len(i) > 1 and not i.startswith("\\x")
     ]
     ice_teas_helper = [
         i + "lemonade)" if c == 0 else i.strip()
@@ -31,12 +35,12 @@ if __name__ == "__main__":
     ice_teas = [
         i.capitalize().replace("_", "").replace("\n", " ")
         for i in ice_teas_helper
-        if len(i) > 1
+        if len(i) > 1 and not i.startswith("\\x")
     ]
     ice_blend = [
         i.strip("b'").strip(".").capitalize().strip().replace("frop", "frap")
         for i in menu4.decode("utf-8").replace("\n", " ").replace("‘", "").split("Mix")
-        if len(i) > 1
+        if len(i) > 1 and not i.startswith("\\x")
     ]
     toppings = [
         i.strip("b'")
@@ -54,22 +58,22 @@ if __name__ == "__main__":
         .replace("jl", "jelly")
         .replace("je", "jelly")
         .split("Mix")
-        if len(i) > 1
+        if len(i) > 1 and not i.startswith("\\x")
     ]
     tapioca = [
         i.strip("b'").strip(".").capitalize().strip() + " tapioca"
         for i in toppings[0].split("tapioca")
-        if len(i) > 1 and len(i) < 75
+        if len(i) > 1 and len(i) < 75 and not i.startswith("\\x")
     ]
     jelly = [
         i.strip("b'").strip(".").capitalize().strip() + " jelly"
         for i in toppings[0].split("jelly")
-        if len(i) > 1 and len(i) < 75
+        if len(i) > 1 and len(i) < 75 and not i.startswith("\\x")
     ]
     pobbles = [
         i.strip("b'").strip(".").capitalize().strip() + " pobbles"
         for i in toppings[0].split("pobbles")
-        if len(i) > 1 and len(i) < 75
+        if len(i) > 1 and len(i) < 75 and not i.startswith("\\x")
     ]
     toppings = tapioca + pobbles + jelly
     toppings[2] = [i for i in toppings[2].split("tapioca")][-1].strip()
